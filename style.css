@@ -1,0 +1,100 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    /* background-color: wheat; */
+background-image: url("background3.jpg");
+background-repeat: no-repeat;
+background-position: auto;
+background-size: cover;
+background-attachment: fixed;
+}
+h1{
+    margin-top: 30px;
+text-align: center;
+color: rgb(0, 255, 221);
+text-shadow: 2px 2px 4px rgb(0, 0, 0);
+
+}
+.Inputdiv{
+
+    width: 400px;
+    margin-top: 70px !important;
+/* text-align: center; */
+margin: 0px auto;
+
+}
+.Outputdiv{
+ width: 400px; 
+ margin: 10px auto;
+ 
+}
+#Todo-item{
+    outline: none;
+    padding: 8px 0px;
+    padding-left:10px ;
+    width: 210px;
+    /* margin-right: 8px; */
+}
+#Todo-item:focus{
+border: 2px solid blueviolet;
+
+}
+.btn{
+    outline: none;
+    padding: 8px 8px;
+    background-color: rgb(36, 156, 212);
+    color: white;
+}
+
+.btn1{
+    outline: none;
+    padding: 8px 8px;
+    background-color: rgb(36, 156, 212);
+    color: white;
+    margin-left: 8px;
+    
+}
+.btn2{
+    background-color: red;
+    outline: none;
+    padding: 8px 8px;
+    color: white;
+    margin-left: 8px;
+   
+}
+
+li{
+    position: relative;
+    background-color: burlywood;
+    box-shadow: 1px 1px 1px white;
+    padding: 12px 25px;
+    list-style: none;
+    margin-bottom: 4px;
+}
+.btn-Mr1{
+/* margin-left: 60px; */
+
+position: absolute;
+top: 8%;
+right: 20%;
+}
+.btn-Mr2{
+    background-color: red;
+    position: absolute;
+    top: 8%;
+right: 2%;
+}
+.inputEdit{
+position: absolute;
+top: 8%;
+right:33% ;
+    width: 120px;
+    outline: none;
+    padding: 8px 0px;
+    /* color: ; */
+}
+.inputEdit:focus{
+    border: 2px solid blueviolet;
+}
