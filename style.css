@@ -18,35 +18,33 @@ text-shadow: 2px 2px 4px rgb(0, 0, 0);
 
 }
 .Inputdiv{
+text-align: center;
 
-    width: 400px;
     margin-top: 70px !important;
-/* text-align: center; */
-margin: 0px auto;
+
 
 }
 .Outputdiv{
- width: 400px; 
- margin: 10px auto;
- 
+
+    margin-top: 5px;
+width: 96%;
+margin: 0 auto;
 }
 #Todo-item{
     outline: none;
     padding: 8px 0px;
     padding-left:10px ;
-    width: 210px;
-    /* margin-right: 8px; */
+    width: 31%;
+
 }
 #Todo-item:focus{
 border: 2px solid blueviolet;
 
 }
-.btn{
-    outline: none;
-    padding: 8px 8px;
-    background-color: rgb(36, 156, 212);
-    color: white;
-}
+#list{
+    margin-top: 10px;
+    /* text-align: center; */
+    }
 
 .btn1{
     outline: none;
@@ -71,30 +69,33 @@ li{
     box-shadow: 1px 1px 1px white;
     padding: 12px 25px;
     list-style: none;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
-.btn-Mr1{
-/* margin-left: 60px; */
 
-position: absolute;
-top: 8%;
-right: 20%;
-}
-.btn-Mr2{
-    background-color: red;
-    position: absolute;
-    top: 8%;
-right: 2%;
-}
-.inputEdit{
-position: absolute;
-top: 8%;
-right:33% ;
-    width: 120px;
-    outline: none;
-    padding: 8px 0px;
-    /* color: ; */
-}
 .inputEdit:focus{
     border: 2px solid blueviolet;
 }
+ #inputId{
+    margin-left: 120px;
+}
+#inputid{
+    width: 100px;
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    right:30%
+}
+.buttonsMr{
+    position: absolute;
+    top: 5%;
+    bottom: 5%;
+    right: 3%;
+    margin-left: 8px;
+
+}
+.inputEdit{
+    
+    width: 70px;
+ 
+}
+
