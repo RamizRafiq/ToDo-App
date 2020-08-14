@@ -9,71 +9,174 @@ var editBtn=document.createElement('button');
 var delText=document.createTextNode('Delete');
 var editText=document.createTextNode('Edit');
 var span=document.createElement('span');
+span.setAttribute("id","inputId")
 delBtn.appendChild(delText);
 editBtn.appendChild(editText);
-delBtn.setAttribute('class','btn');
-editBtn.setAttribute('class','btn');
-delBtn.classList.add('btn-Mr2');
-editBtn.classList.add('btn-Mr1');
+delBtn.setAttribute('class','btn2');
+editBtn.setAttribute('class','btn1');
 delBtn.setAttribute('onclick',"deleteli(this)");
 editBtn.setAttribute('onclick','edit(this)');
-
+var butSpan=document.createElement('span');
+butSpan.setAttribute("class","buttonsMr");
 
 if(inputValue.value==""){
-liText=document.createTextNode('Blank');
-    li.appendChild(liText);
-    li.appendChild(span);
-    li.appendChild(editBtn);
-    li.appendChild(delBtn);
-    
-    list.appendChild(li);
+// liText=document.createTextNode('Blank');
+//     li.appendChild(liText);
+//     li.appendChild(span);
+//     butSpan.appendChild(editBtn)
+//     butSpan.appendChild(delBtn)
+//     li.appendChild(butSpan);
+ 
+//     list.appendChild(li);
+
     
 }
 else{
+
+    var key=firebase.database().ref("items").push().key
+    
+li.setAttribute("id",key)
     li.appendChild(liText);
     li.appendChild(span);
-    li.appendChild(editBtn);
-    li.appendChild(delBtn);
-    
+    butSpan.appendChild(editBtn)
+    butSpan.appendChild(delBtn)
+    li.appendChild(butSpan);
     list.appendChild(li);
     
+
+// Database
+firebase.database().ref("items/"+key).set(inputValue.value)
+
+
+
+
+
 
 }
 inputValue.value="";
 
 }
 
+
+
+
+
+
 function deleteli(e){
-e.parentNode.remove();
+
+var elementId=e.parentNode.parentElement.id
+
+
+
+    firebase.database().ref("items").once("value",function(data){
+        
+ var dataVal=data.val();
+
+
+for(var prop in dataVal){
+
+    if(elementId==prop){
+
+firebase.database().ref("items/"+prop).remove()
+            e.parentNode.parentElement.remove()
+    }
+
 }
+
+    })
+
+
+
+    
+
+
+
+}
+
+
+
 var cout=0;
 function edit(e){
-    var inputTag=document.createElement('input');
-    inputTag.setAttribute('class','inputEdit');
-    inputTag.setAttribute('id',"inputid");
-    var inputid=document.getElementById('inputid');
+    var elementId=e.parentNode.parentElement.id;
+    var newVal=prompt("Input Value:");
+firebase.database().ref("items").once("value",function(data){
+var dataVal=data.val()
 
-   
-    e.parentElement.children[0].appendChild(inputTag)
-    e.parentElement.children[1].innerHTML='Update';
-    
-   cout++;
-   console.log(cout);
-   if(cout==2){
-    e.parentNode.childNodes[0].nodeValue=inputid.value;
-// console.log(inputid.value);
-    e.parentElement.children[0].innerHTML=" ";
-    e.parentElement.children[1].innerHTML='Edit';
-    cout=0;
-   }
-
+for(var prop in dataVal){
+if(elementId==prop){
+    firebase.database().ref("items/"+prop).set(newVal)
+    // console.log(prop)
+}
+}
+})
+ 
  
         
 }
 
-function deleteall(){
 
+// Remove all li
+
+function deleteall(){
+firebase.database().ref("items").remove()
 list.innerHTML=" ";
 
 
 }
+
+
+
+
+
+
+
+
+// Retrive data
+
+firebase.database().ref("items").once("value",function(data){
+var dataVal=data.val();
+for(var prop in dataVal){
+    console.log(prop)
+    console.log(dataVal[prop])
+
+
+
+
+    var li=document.createElement('li');
+    li.setAttribute("id",prop)
+    var liText=document.createTextNode(dataVal[prop]);
+    var delBtn=document.createElement('button');
+    var editBtn=document.createElement('button');
+    var delText=document.createTextNode('Delete');
+    var editText=document.createTextNode('Edit');
+    var span=document.createElement('span');
+    span.setAttribute("id","inputId")
+    delBtn.appendChild(delText);
+    editBtn.appendChild(editText);
+    delBtn.setAttribute('class','btn2');
+    editBtn.setAttribute('class','btn1');
+    delBtn.setAttribute('onclick',"deleteli(this)");
+    editBtn.setAttribute('onclick','edit(this)');
+    var butSpan=document.createElement('span');
+    butSpan.setAttribute("class","buttonsMr");
+    
+// set on page 
+li.appendChild(liText);
+    li.appendChild(span);
+    butSpan.appendChild(editBtn)
+    butSpan.appendChild(delBtn)
+    li.appendChild(butSpan);
+    list.appendChild(li);
+    
+
+
+
+
+
+
+
+
+
+}
+
+})
